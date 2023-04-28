@@ -1,0 +1,69 @@
+@import "../../app.component.scss";
+.main-header {
+  grid-row: 1;
+  min-height: $header-height;
+  padding-block: 4em;
+  background: linear-gradient($bgc2, $bgc3, $bgc4);
+  align-items: center;
+  padding-inline: em($outer-padding);
+  .logo {
+    width: em(300px);
+    min-height: 3em;
+    img {
+      height: em(100px);
+      width: em(250px);
+      border-radius: 1em;
+    }
+  }
+  .mobile-menu-btn {
+    display: none;
+  }
+  .main-nav {
+    width: 30%;
+    margin-inline-end: $outer-padding;
+    transition: 0.6s;
+    padding: 1em;
+    ul {
+      align-items: center;
+      gap: em(10px);
+      li,
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        i {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    max-height: 20%;
+    .main-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      transform: translate(100%);
+      min-height: 10em;
+      &.open {
+        transform: translate(15%);
+        background-color: $bgc3;
+        z-index: 1;
+      }
+      ul {
+        margin-top: em(10px);
+        flex-direction: column;
+        width: 100%;
+        gap: em(20px);
+        justify-content: space-between;
+      }
+    }
+    .mobile-menu-btn {
+      display: block;
+      margin-inline-end: 0.5em;
+      font-size: 2rem;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<main class="home-page main-layout" *ngIf="loggedInUser">
+  <h1>Hello {{ loggedInUser.name }}</h1>
+  <h3>Coins: {{ loggedInUser.coins }}</h3>
+  <h3>BTC: {{ rate }}</h3>
+
+  <!-- <MovesList moves={user.moves.slice(0, 3)} title={'Recent moves'} /> -->
+</main>
+<main class="home-page main-layout" #callToAction>
+  <h1>
+    What are you waiting for? <br />
+    <span>sign up and start inveesting</span>
+  </h1>
+</main>

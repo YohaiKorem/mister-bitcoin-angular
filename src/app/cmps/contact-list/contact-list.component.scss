@@ -1,0 +1,21 @@
+@import "../../app.component.scss";
+.contact-list {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(auto-fit, clamp(em(300px), em(400px), 100%));
+  width: 100%;
+  gap: em(10px);
+  place-items: center;
+  margin-block-start: 1em;
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    gap: 0;
+    grid-template-columns: repeat(auto-fit, (100%));
+  }
+}

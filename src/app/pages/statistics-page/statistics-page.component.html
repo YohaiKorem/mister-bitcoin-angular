@@ -1,0 +1,17 @@
+<main class="statistics-page main">
+  <div class="btns-container flex space-between">
+    <button (click)="display = marketPriceStr" class="btn btn-purple">
+      Market price
+    </button>
+    <button (click)="display = avgBlockSizeStr" class="btn btn-purple">
+      Avergae block size
+    </button>
+    <button (click)="display = tradeVolumeStr" class="btn btn-purple">
+      Trade volume
+    </button>
+  </div>
+
+  <chart *ngIf="display === avgBlockSizeStr" [chartData]="avgBlockSize"></chart>
+  <chart *ngIf="display === marketPriceStr" [chartData]="marketPrice"></chart>
+  <chart *ngIf="display === tradeVolumeStr" [chartData]="tradeVolume"></chart>
+</main>

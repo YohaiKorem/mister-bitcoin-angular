@@ -1,0 +1,6 @@
+<a class="btn btn-purple" href="#">Add a new contact</a>
+<contact-filter></contact-filter>
+<contact-list
+  (remove)="onRemoveContact($event)"
+  [contacts]="contacts$ | async"
+></contact-list>

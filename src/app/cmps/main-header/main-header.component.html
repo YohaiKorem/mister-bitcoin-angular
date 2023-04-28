@@ -1,0 +1,33 @@
+<header class="main-header flex space-between">
+  <!-- <NavLink to="/"> -->
+  <div class="logo">
+    <img src="../../../assets/imgs/mister-bitcoin-logo.png" alt="Logo" />
+  </div>
+  <!-- </NavLink> -->
+  <nav class="main-nav">
+    <ul class="flex space-between">
+      <li>
+        <!-- <NavLink to="/"> -->
+        <i class="fa-solid fa-house"></i>
+        <!-- </NavLink> -->
+      </li>
+      <li>
+        <!-- <NavLink to="/contact"> -->
+        <i class="fa-regular fa-address-book"></i>
+        <!-- </NavLink> -->
+      </li>
+      <li>
+        <!-- <NavLink to="/statistics"> -->
+        <i class="fa-solid fa-chart-simple"></i>
+        <!-- </NavLink> -->
+      </li>
+      <li>
+        <!-- <NavLink to="/signup"> -->
+        <i class="fa-solid fa-right-to-bracket"></i>
+        <!-- </NavLink> -->
+      </li>
+    </ul>
+  </nav>
+  <i class="fa-solid fa-bars mobile-menu-btn" (click)="toggleMenu()"></i>
+</header>
+<div (click)="toggleMenu()" class="overlay"></div>

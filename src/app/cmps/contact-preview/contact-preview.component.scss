@@ -1,0 +1,43 @@
+@import "../../app.component.scss";
+.contact-preview {
+  background-color: rgb(194, 204, 216);
+  color: $fontclr4;
+  border-radius: 1em;
+  padding: rem(10px) rem(14px);
+  width: em(300px);
+  cursor: pointer;
+  a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-inline-end: 1em;
+    .user-img {
+      max-width: em(80px);
+    }
+    .contact-info-container {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: em(10px);
+      h4 {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    min-width: 100%;
+    max-width: 100%;
+    padding: em(8px) em(8px);
+    border-radius: 0;
+    border-bottom: 0.5px solid rgb(216, 208, 208);
+    a {
+      margin-inline-end: 2em;
+    }
+    &:hover {
+      background-color: darken($color: rgb(194, 204, 216), $amount: 10);
+    }
+  }
+}
