@@ -1,0 +1,29 @@
+@import "../../app.component.scss";
+.contact-edit {
+  background: $gradient;
+  width: 100%;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  color: $fontclr1;
+  img {
+    width: 100px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .btns-container {
+    justify-self: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+  }
+}

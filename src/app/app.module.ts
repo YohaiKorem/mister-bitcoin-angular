@@ -17,6 +17,7 @@ import { StatisticsPageComponent } from './pages/statistics-page/statistics-page
 import { SignupComponent } from './pages/signup/signup.component';
 import { ChartComponent } from './cmps/chart/chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,13 @@ import { NgChartsModule } from 'ng2-charts';
     SignupComponent,
     ChartComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgChartsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgChartsModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

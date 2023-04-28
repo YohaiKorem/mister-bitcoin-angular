@@ -36,12 +36,7 @@ export class UserService {
   }
 
   public getUser() {
-    return {
-      _id: '101',
-      name: 'popo',
-      coins: 100,
-      moves: [],
-    };
+    return new User('101', 'popo', 100, []);
   }
 
   public get loggedInUser(): User {

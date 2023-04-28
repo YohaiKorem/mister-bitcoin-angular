@@ -1,1 +1,29 @@
-<p>moves-list works!</p>
+<section class="moves-list-container">
+  <div class="btns-container">
+    <button class="btn btn-purple" (click)="setSortCriteria('date')">
+      Sort by moves date
+    </button>
+    <button class="btn btn-purple" (click)="setSortCriteria('amount')">
+      Sort by moves amount
+    </button>
+  </div>
+  <ng-container *ngIf="sortedMoves!.length > 0; else noMoves">
+    <ul class="moves-list">
+      <h2>{{ title }}</h2>
+      <li *ngFor="let move of sortedMoves" class="move-item">
+        <ng-container *ngIf="!isDetailsCmp">
+          <h3>
+            <a [routerLink]="['/contact', move.to?._id]">{{
+              "To: " + move.to?.name
+            }}</a>
+          </h3>
+        </ng-container>
+        <h3>BTC: {{ move.amount }}</h3>
+        <h3>At: {{ getFormattedDate(move.at) }}</h3>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #noMoves>
+    <div>No moves yet</div>
+  </ng-template>
+</section>

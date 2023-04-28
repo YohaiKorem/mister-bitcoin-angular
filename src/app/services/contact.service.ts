@@ -10,7 +10,7 @@ import {
 } from 'rxjs';
 import { storageService } from './async-storage.service';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { Contact } from '../models/contact.model';
+import { Contact, ContactFilter } from '../models/contact.model';
 const ENTITY = 'contacts';
 
 @Injectable({
@@ -19,6 +19,12 @@ const ENTITY = 'contacts';
 export class ContactService {
   private _contacts$ = new BehaviorSubject<Contact[]>([]);
   public contacts$ = this._contacts$.asObservable();
+  private _contactFilter$ = new BehaviorSubject<ContactFilter>({
+    name: '',
+    phone: '',
+    email: '',
+  });
+  public contactFilter$ = this._contactFilter$.asObservable();
 
   constructor() {
     // Handling Demo Data, fetching from storage || saving to storage
@@ -31,9 +37,14 @@ export class ContactService {
   public loadContacts() {
     return from(storageService.query(ENTITY)).pipe(
       tap((contacts) => {
-        const filterBy = { term: '' };
-        if (filterBy && filterBy.term) {
-          contacts = this._filter(contacts, filterBy.term);
+        const filterBy = this._contactFilter$.value;
+        console.log(filterBy);
+        if (
+          (filterBy && filterBy.name) ||
+          (filterBy && filterBy.phone) ||
+          (filterBy && filterBy.email)
+        ) {
+          contacts = this._filter(contacts, filterBy);
         }
         this._contacts$.next(this._sort(contacts));
       }),
@@ -72,6 +83,11 @@ export class ContactService {
       email: '',
       phone: '',
     };
+  }
+
+  public setFilter(contactFilter: ContactFilter) {
+    this._contactFilter$.next({ ...contactFilter });
+    this.loadContacts().subscribe();
   }
 
   private _updateContact(contact: Contact) {
@@ -115,15 +131,17 @@ export class ContactService {
     });
   }
 
-  private _filter(contacts: Contact[], term: string) {
-    term = term.toLocaleLowerCase();
-    return contacts.filter((contact) => {
-      return (
-        contact.name.toLocaleLowerCase().includes(term) ||
-        contact.phone.toLocaleLowerCase().includes(term) ||
-        contact.email.toLocaleLowerCase().includes(term)
-      );
-    });
+  private _filter(contacts: Contact[], filterBy: any) {
+    let filteredContacts = contacts;
+    for (let key in filterBy) {
+      console.log(key);
+
+      const regex = new RegExp(filterBy[key], 'i');
+      filteredContacts = filteredContacts.filter((contact: any) => {
+        return regex.test(contact[key]);
+      });
+    }
+    return filteredContacts;
   }
 
   private _createContacts() {

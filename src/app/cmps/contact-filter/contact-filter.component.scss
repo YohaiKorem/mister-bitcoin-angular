@@ -1,5 +1,7 @@
 @import "../../app.component.scss";
 .contact-filter {
+  width: 100%;
+  min-height: 100%;
   grid-row: 1;
   margin-block-start: 1em;
   display: flex;

@@ -1,1 +1,10 @@
-<p>contact-filter works!</p>
+<form *ngFor="let key of contactFilter | keyvalue">
+  <label [for]="key.key">{{ key.key }}</label>
+  <input
+    [(ngModel)]="contactFilter[key.key]"
+    (ngModelChange)="onSetFilter()"
+    type="text"
+    [name]="key.key"
+    placeholder="Search by {{ key.key }}"
+  />
+</form>

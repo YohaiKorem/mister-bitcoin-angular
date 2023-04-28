@@ -11,3 +11,9 @@ export class Contact {
     this._id = id;
   }
 }
+
+export interface ContactFilter {
+  name: string;
+  phone: string;
+  email: string;
+}

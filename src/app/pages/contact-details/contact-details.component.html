@@ -1,1 +1,12 @@
-<p>contact-details works!</p>
+<section *ngIf="contact" class="contact-details">
+  <nav class="sub-nav">
+    <button class="btn btn-purple">Edit</button>
+    <button class="btn btn-purple">back</button>
+  </nav>
+  <img class="user-img" src="../../../assets/imgs/defaultUserImg.jpg" />
+  <h2 class="contact-name">{{ contact.name }}</h2>
+  <h3 class="contact-phone">{{ contact.phone }}</h3>
+  <h3 class="contact-email">{{ contact.email }}</h3>
+  <transfer-funds> </transfer-funds>
+  <!-- <moves-list [moves]="loggedInUser!.moves" [title]="title"></moves-list> -->
+</section>

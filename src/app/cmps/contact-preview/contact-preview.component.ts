@@ -9,8 +9,4 @@ import { Contact } from 'src/app/models/contact.model';
 export class ContactPreviewComponent {
   @Input() contact!: Contact;
   @Output() remove = new EventEmitter<string>();
-
-  onRemoveContact() {
-    this.remove.emit(this.contact._id);
-  }
 }
