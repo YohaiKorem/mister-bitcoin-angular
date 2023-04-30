@@ -174,7 +174,7 @@
     margin-bottom: 10px;
   }
 
-  input:not([type='checkbox']),
+  input:not([type="checkbox"]),
   button {
     padding: 5px 8px;
     width: 100%;
@@ -200,6 +200,7 @@
   transition-duration: 85ms;
   transition-timing-function: ease;
   border-radius: 1em;
+  cursor: pointer;
   &.btn-purple {
     background-color: $bgc2;
     &:hover {
@@ -231,11 +232,35 @@
 
 .overlay.open {
   display: block;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+
   z-index: 0;
   background-color: #000;
   opacity: 0.6;
+  cursor: pointer;
+
+  & + * {
+    overflow-y: scroll;
+  }
+}
+
+.child-page {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.no-scroll {
+  overflow-y: hidden;
 }

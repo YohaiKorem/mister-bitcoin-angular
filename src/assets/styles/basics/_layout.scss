@@ -1,3 +1,4 @@
+@import "../setup/functions";
 .container {
   max-width: $normal-breakpoint;
   padding-left: 10px;
@@ -25,6 +26,8 @@
   display: grid;
   min-height: 100vh;
   min-width: 100vw;
+  overflow-y: hidden;
+
   gap: 1em;
   grid-template-rows: $header-height 1fr;
   grid-template-columns: em(20px) 1fr em(20px);

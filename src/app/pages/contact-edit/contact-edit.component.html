@@ -1,18 +1,28 @@
-<section class="contact-edit">
+<section class="contact-edit child-page">
   <img src="../../../assets/imgs/defaultUserImg.jpg" />
   <form (submit)="onSaveContact()" class="contact-edit-form">
     <label for="name">Name</label>
-    <input type="text" name="name" id="name" [value]="contact?.name" />
+    <input type="text" name="name" id="name" [(ngModel)]="contact.name" />
     <label for="phone">Phone</label>
-    <input type="text" name="phone" id="phone" [value]="contact?.phone" />
+    <input type="text" name="phone" id="phone" [(ngModel)]="contact.phone" />
     <label for="email">Email</label>
-    <input type="text" name="email" id="email" [value]="contact?.email" />
+    <input type="text" name="email" id="email" [(ngModel)]="contact.email" />
     <button (click)="onSaveContact()" class="btn btn-blue">Save</button>
   </form>
   <div class="btns-container">
-    <button class="btn btn-purple btn-back">Back</button>
-    <button (click)="onRemoveContact()" class="btn btn-red btn-remove">
+    <a routerLink="/contact/{{ contact._id }}" class="btn btn-purple btn-back"
+      >Back</a
+    >
+    <button
+      *ngIf="contact._id"
+      (click)="onRemoveContact()"
+      class="btn btn-red btn-remove"
+    >
       Delete
     </button>
   </div>
 </section>
+
+<ng-container>
+  <a routerLink="/contact" class="overlay open"></a>
+</ng-container>

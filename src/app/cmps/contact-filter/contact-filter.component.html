@@ -1,10 +1,26 @@
-<form *ngFor="let key of contactFilter | keyvalue">
-  <label [for]="key.key">{{ key.key }}</label>
-  <input
-    [(ngModel)]="contactFilter[key.key]"
-    (ngModelChange)="onSetFilter()"
-    type="text"
-    [name]="key.key"
-    placeholder="Search by {{ key.key }}"
-  />
+<form class="contact-filter">
+  <ng-container
+    *ngFor="let term of contactFilter | keyvalue; trackBy: trackByFn"
+  >
+    <label [for]="term.key">{{ term.key }}</label>
+    <input
+      [id]="term.key"
+      [(ngModel)]="contactFilter[term.key]"
+      (ngModelChange)="onSetFilter($event)"
+      type="text"
+      [name]="term.key"
+      placeholder="Search by {{ term.key }}"
+    />
+  </ng-container>
 </form>
+<!-- <div class="scene">
+  <input type="checkbox" name="" id="cb" />
+  <label for="cb" class="box">
+    <div class="side">Yes</div>
+    <div class="side">No</div>
+    <div class="side"></div>
+    <div class="side"></div>
+    <div class="side"></div>
+    <div class="side"></div>
+  </label>
+</div> -->

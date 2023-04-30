@@ -1,4 +1,10 @@
-@import "../../app.component.scss";
+@import "../../app-root/app.component.scss";
+
+:host {
+  transform: translate(12%, 14%);
+  border-radius: 50%;
+}
+
 .contact-details {
   display: flex;
   flex-direction: column;

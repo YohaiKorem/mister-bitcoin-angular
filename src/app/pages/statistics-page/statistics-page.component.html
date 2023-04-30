@@ -11,7 +11,18 @@
     </button>
   </div>
 
-  <chart *ngIf="display === avgBlockSizeStr" [chartData]="avgBlockSize"></chart>
-  <chart *ngIf="display === marketPriceStr" [chartData]="marketPrice"></chart>
-  <chart *ngIf="display === tradeVolumeStr" [chartData]="tradeVolume"></chart>
+  <ng-container [ngSwitch]="display">
+    <chart
+      *ngSwitchCase="avgBlockSizeStr"
+      [chartData]="avgBlockSize$ | async"
+    ></chart>
+    <chart
+      *ngSwitchCase="marketPriceStr"
+      [chartData]="marketPrice$ | async"
+    ></chart>
+    <chart
+      *ngSwitchCase="tradeVolumeStr"
+      [chartData]="tradeVolume$ | async"
+    ></chart>
+  </ng-container>
 </main>

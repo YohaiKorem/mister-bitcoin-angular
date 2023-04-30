@@ -1,23 +1,21 @@
-@import "../../app.component.scss";
+@import "../../app-root/app.component.scss";
+
 .contact-page {
   grid-template-rows: 10% 90%;
   place-items: center;
   gap: 1em;
-
   .btn-add-contact {
-    margin-top: 1em;
+    margin-block-start: 1em;
     margin-inline-end: 1em;
     align-self: start;
     justify-self: end;
     grid-row: 1;
     grid-column: 2;
   }
+
   @media (max-width: $tablet-breakpoint) {
     .btn-add-contact {
       margin-inline-end: 0;
-
-      width: em(50px);
-      height: em(50px);
     }
   }
 }

@@ -1,4 +1,4 @@
-@import "../../app.component.scss";
+@import "../../app-root/app.component.scss";
 .main-header {
   grid-row: 1;
   min-height: $header-height;
@@ -44,7 +44,7 @@
     .main-nav {
       position: fixed;
       top: 0;
-      right: 0;
+      right: -10%;
       transform: translate(100%);
       min-height: 10em;
       &.open {
@@ -58,12 +58,22 @@
         width: 100%;
         gap: em(20px);
         justify-content: space-between;
+        li {
+          margin-inline-end: 2em;
+        }
       }
     }
     .mobile-menu-btn {
       display: block;
       margin-inline-end: 0.5em;
       font-size: 2rem;
+    }
+  }
+
+  :host {
+    .overlay {
+      top: 0;
+      left: 0;
     }
   }
 }

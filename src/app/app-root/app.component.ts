@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { ContactService } from './services/contact.service';
-import { BitcoinService } from './services/bitcoin.service';
-import { UserService } from './services/user.service';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { ContactService } from '../services/contact.service';
+import { BitcoinService } from '../services/bitcoin.service';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  host: {
+    class: 'main-layout',
+  },
 })
 export class AppComponent implements OnInit {
   constructor(

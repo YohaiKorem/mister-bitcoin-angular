@@ -9,7 +9,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private bitcoinService: BitcoinService
@@ -17,15 +17,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
   loggedInUser: User | null = null;
   loggedInUser$!: Observable<User>;
   rate!: Object;
-  rate$!: Subscription;
+  rate$!: Observable<string>;
   ngOnInit(): void {
     this.loggedInUser = this.userService.getUser();
-    this.rate$ = this.bitcoinService.getRate().subscribe((data) => {
-      this.rate = data;
-    });
-  }
-
-  ngOnDestroy() {
-    this.rate$.unsubscribe();
+    this.rate$ = this.bitcoinService.getRateStream();
   }
 }

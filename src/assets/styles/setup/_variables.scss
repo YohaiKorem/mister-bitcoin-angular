@@ -25,3 +25,13 @@ $header-height: em(44px);
 $footer-height: 44px;
 
 $outer-padding: (20px);
+
+:root {
+  --perspective: 1000px;
+  --camera-dolly: 0px;
+  --camera-truck: 0px;
+  --camera-pedestal: 50px;
+  --camera-pan: 0deg;
+  --camera-tilt: 0deg;
+  --camera-roll: 0deg;
+}

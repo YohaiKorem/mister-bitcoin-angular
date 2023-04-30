@@ -1,8 +1,12 @@
 <article class="contact-preview">
-  <div class="user-img-container">
-    <img class="user-img" src="../../../assets/imgs/defaultUserImg.jpg" />
-  </div>
-  <a href="">
+  <a
+    routerLink="{{ contact._id }}"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <div class="user-img-container">
+      <img class="user-img" src="../../../assets/imgs/defaultUserImg.jpg" />
+    </div>
     <div class="contact-info-container flex column align-center">
       <h3>{{ contact.name }}</h3>
       <h4>{{ contact.phone }}</h4>

@@ -8,7 +8,7 @@ import zoomPlugin from 'chartjs-plugin-zoom';
   styleUrls: ['./chart.component.scss'],
 })
 export class ChartComponent implements OnInit {
-  @Input() chartData!: ChartData;
+  @Input() chartData!: ChartData | null;
 
   ngOnInit(): void {
     const chart = document.getElementById('chart');
@@ -16,13 +16,13 @@ export class ChartComponent implements OnInit {
     new Chart('chart', {
       type: 'bar',
       data: {
-        labels: this.chartData.values.map((value) =>
+        labels: this.chartData?.values.map((value) =>
           new Date(value.x * 1000).toDateString()
         ),
         datasets: [
           {
-            label: this.chartData.description,
-            data: this.chartData.values.map((value) => value.y),
+            label: this.chartData?.description,
+            data: this.chartData?.values.map((value) => value.y),
             borderWidth: 2,
           },
         ],

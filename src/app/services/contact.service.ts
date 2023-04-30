@@ -91,14 +91,15 @@ export class ContactService {
   }
 
   private _updateContact(contact: Contact) {
-    return from(storageService.post(ENTITY, contact)).pipe(
+    return from(storageService.put(ENTITY, contact)).pipe(
       tap((updatedContact) => {
         const contacts = this._contacts$.value;
-        this._contacts$.next(
-          contacts.map((contact) =>
-            contact._id === updatedContact._id ? updatedContact : contact
-          )
+        const contactIdx = contacts.findIndex(
+          (_contact) => _contact._id === contact._id
         );
+        contacts.splice(contactIdx, 1, updatedContact);
+        this._contacts$.next([...contacts]);
+        return updatedContact;
       }),
       retry(1),
       catchError(this._handleError)

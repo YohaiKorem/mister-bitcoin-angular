@@ -8,10 +8,14 @@ import {
   retry,
   catchError,
   of,
+  timer,
+  switchMap,
 } from 'rxjs';
 import { storageService } from './async-storage.service';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
+import { ChartData } from '../models/chart-data.model';
+
 const ENTITY = 'data';
 @Injectable({
   providedIn: 'root',
@@ -19,28 +23,18 @@ const ENTITY = 'data';
 export class BitcoinService {
   constructor(private http: HttpClient) {}
 
-  public fetchData(str: string): Observable<Object> {
+  public fetchData(str: string): Observable<ChartData> {
     let url;
-    if (str) {
-      const data = JSON.parse(localStorage.getItem(str) || 'null');
-      if (data || data?.length) return of(data); // return cached data if it exists
+    const data = JSON.parse(localStorage.getItem(str) || 'null');
+    if (data || data?.length) return of(data); // return cached data if it exists
 
-      url = `https://api.blockchain.info/charts/${str}?timespan=5months&format=json&cors=true`;
-      return this.http.get(url).pipe(
-        tap((response) => {
-          localStorage.setItem(str, JSON.stringify(response)); // save to local storage
-        }),
-        catchError(this.handleError)
-      );
-    } else {
-      url = `https://blockchain.info/tobtc?currency=USD&value=1`;
-      return this.http.get(url).pipe(
-        tap((response) => {
-          localStorage.setItem('bitcoin_rate', JSON.stringify(response)); // save to local storage
-        }),
-        catchError(this.handleError)
-      );
-    }
+    url = `https://api.blockchain.info/charts/${str}?timespan=5months&format=json&cors=true`;
+    return this.http.get<ChartData>(url).pipe(
+      tap((response) => {
+        localStorage.setItem(str, JSON.stringify(response)); // save to local storage
+      }),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -58,12 +52,14 @@ export class BitcoinService {
     return throwError('Something bad happened; please try again later.');
   }
 
-  public getRate(): Observable<Object> {
+  public getRate = (): Observable<string> => {
     let url = `https://blockchain.info/tobtc?currency=USD&value=1`;
+    return this.http.get<string>(url);
+  };
 
-    return this.http.get(url);
+  public getRateStream(): Observable<string> {
+    return timer(0, 60000).pipe(switchMap(this.getRate));
   }
-
   public getMArketPrice() {}
   public getConfirmedTransactions() {}
 }

@@ -1,33 +1,37 @@
 <header class="main-header flex space-between">
-  <!-- <NavLink to="/"> -->
-  <div class="logo">
-    <img src="../../../assets/imgs/mister-bitcoin-logo.png" alt="Logo" />
-  </div>
-  <!-- </NavLink> -->
-  <nav class="main-nav">
+  <a routerLink="/">
+    <div class="logo">
+      <img src="../../../assets/imgs/mister-bitcoin-logo.png" alt="Logo" />
+    </div>
+  </a>
+  <nav [ngClass]="{ open: isNavOpen }" class="main-nav">
     <ul class="flex space-between">
       <li>
-        <!-- <NavLink to="/"> -->
-        <i class="fa-solid fa-house"></i>
-        <!-- </NavLink> -->
+        <a routerLink="/">
+          <i class="fa-solid fa-house"></i>
+        </a>
       </li>
       <li>
-        <!-- <NavLink to="/contact"> -->
-        <i class="fa-regular fa-address-book"></i>
-        <!-- </NavLink> -->
+        <a routerLink="/contact">
+          <i class="fa-regular fa-address-book"></i>
+        </a>
       </li>
       <li>
-        <!-- <NavLink to="/statistics"> -->
-        <i class="fa-solid fa-chart-simple"></i>
-        <!-- </NavLink> -->
+        <a routerLink="/statistics">
+          <i class="fa-solid fa-chart-simple"></i>
+        </a>
       </li>
       <li>
-        <!-- <NavLink to="/signup"> -->
-        <i class="fa-solid fa-right-to-bracket"></i>
-        <!-- </NavLink> -->
+        <a routerLink="/signup">
+          <i class="fa-solid fa-right-to-bracket"></i>
+        </a>
       </li>
     </ul>
   </nav>
   <i class="fa-solid fa-bars mobile-menu-btn" (click)="toggleMenu()"></i>
 </header>
-<div (click)="toggleMenu()" class="overlay"></div>
+<div
+  [ngClass]="{ open: isNavOpen }"
+  (click)="toggleMenu()"
+  class="overlay"
+></div>

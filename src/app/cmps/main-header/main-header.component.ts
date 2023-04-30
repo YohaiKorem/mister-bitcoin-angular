@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'main-header',
@@ -8,8 +9,20 @@ import { Component } from '@angular/core';
     class: 'full',
   },
 })
-export class MainHeaderComponent {
+export class MainHeaderComponent implements OnInit {
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  isNavOpen: boolean = false;
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isNavOpen = false;
+      }
+    });
+  }
+
   toggleMenu() {
-    console.log('toggled');
+    this.isNavOpen = !this.isNavOpen;
   }
 }

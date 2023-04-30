@@ -7,7 +7,7 @@ import { ContactService } from 'src/app/services/contact.service';
   templateUrl: './contact-page.component.html',
   styleUrls: ['./contact-page.component.scss'],
 })
-export class ContactPageComponent implements OnInit, OnDestroy {
+export class ContactPageComponent implements OnInit {
   constructor(private contactService: ContactService) {}
   subscription!: Subscription;
   contacts: Contact[] | null = null;
@@ -15,19 +15,11 @@ export class ContactPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.contacts$ = this.contactService.contacts$;
-
-    this.subscription = this.contactService.contacts$.subscribe((contacts) => {
-      this.contacts = contacts;
-    });
   }
 
   onRemoveContact(contactId: string) {
     this.contactService.removeContact(contactId).subscribe({
       error: (err) => console.log('err:', err),
     });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
   }
 }

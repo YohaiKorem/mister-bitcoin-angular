@@ -1,7 +1,13 @@
-<section *ngIf="contact" class="contact-details">
+<section *ngIf="contact$ | async as contact" class="contact-details">
   <nav class="sub-nav">
-    <button class="btn btn-purple">Edit</button>
-    <button class="btn btn-purple">back</button>
+    <a
+      routerLink="/contact/edit/{{ contact._id }}"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="btn btn-purple"
+      >Edit</a
+    >
+    <a routerLink="/contact" class="btn btn-purple">back</a>
   </nav>
   <img class="user-img" src="../../../assets/imgs/defaultUserImg.jpg" />
   <h2 class="contact-name">{{ contact.name }}</h2>

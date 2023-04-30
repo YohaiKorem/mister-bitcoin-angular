@@ -1,4 +1,8 @@
-<a class="btn btn-purple" href="#">Add a new contact</a>
-<contact-filter></contact-filter>
-<contact-list [contacts]="contacts$ | async"></contact-list>
-<contact-edit (remove)="onRemoveContact($event)"></contact-edit>
+<section class="contact-page">
+  <contact-filter></contact-filter>
+  <a class="btn btn-purple btn-add-contact" routerLink="edit"
+    >Add a new contact</a
+  >
+  <contact-list [contacts]="contacts$ | async"></contact-list>
+</section>
+<router-outlet></router-outlet>
