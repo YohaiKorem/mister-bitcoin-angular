@@ -1,4 +1,5 @@
 import { Contact } from '../models/contact.model';
+import { User } from '../models/user.model';
 
 export const storageService = {
   query,
@@ -9,7 +10,7 @@ export const storageService = {
   makeId,
 };
 
-type Entity = Contact;
+type Entity = any;
 
 async function query(entityType: string, delay = 10): Promise<Entity[]> {
   var entities = JSON.parse(localStorage.getItem(entityType) || 'null') || [];
@@ -39,6 +40,7 @@ async function post(entityType: string, newEntity: Entity): Promise<Entity> {
 async function put(entityType: string, updatedEntity: Entity): Promise<Entity> {
   const entities = await query(entityType);
   const idx = entities.findIndex((entity) => entity._id === updatedEntity._id);
+
   entities[idx] = updatedEntity;
   _save(entityType, entities);
   return updatedEntity;

@@ -18,6 +18,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { ChartComponent } from './cmps/chart/chart.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
+import { CoinComponent } from './cmps/coin/coin.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,9 @@ import { FormsModule } from '@angular/forms';
     StatisticsPageComponent,
     SignupComponent,
     ChartComponent,
+    CoinComponent,
+
+    AboutPageComponent,
   ],
   imports: [
     BrowserModule,

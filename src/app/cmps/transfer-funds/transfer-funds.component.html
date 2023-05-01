@@ -1,7 +1,7 @@
 <section class="transfer-funds">
   <form (submit)="handleSubmit()" class="transfer-form">
     <label for="transfer-amount">transfer amount</label>
-    <input type="text" id="transfer-amount" (Change)="handleChange()" />
+    <input type="text" name="transfer-amount" [(ngModel)]="transferAmount" />
     <button class="btn btn-purple">Transfer</button>
   </form>
 </section>

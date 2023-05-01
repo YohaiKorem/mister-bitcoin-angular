@@ -26,6 +26,11 @@
       padding: rem(10px) rem(14px);
       width: em(300px);
       color: $fontclr4;
+      transition: 0.6s;
+      cursor: pointer;
+      &:hover {
+        scale: 1.1;
+      }
       h3 {
         font-weight: 700;
       }

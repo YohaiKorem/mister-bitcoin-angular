@@ -110,7 +110,7 @@ export class ContactService {
     const newContact = new Contact(contact.name, contact.email, contact.phone);
     if (typeof newContact.setId === 'function')
       newContact.setId(this._getRandomId());
-    return from(storageService.post(ENTITY, contact)).pipe(
+    return from(storageService.post(ENTITY, newContact)).pipe(
       tap((newContact) => {
         const contacts = this._contacts$.value;
         this._contacts$.next([...contacts, newContact]);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'transfer-funds',
@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./transfer-funds.component.scss'],
 })
 export class TransferFundsComponent {
-  handleSubmit() {}
-  handleChange() {}
+  @Output() transferFunds = new EventEmitter<number>();
+  transferAmount: number = 0;
+  handleSubmit() {
+    if (isNaN(this.transferAmount)) return;
+    this.transferFunds.emit(this.transferAmount);
+  }
 }

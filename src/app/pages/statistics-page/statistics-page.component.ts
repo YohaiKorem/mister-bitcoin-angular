@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BitcoinService } from 'src/app/services/bitcoin.service';
 import { Observable, Subscription } from 'rxjs';
 import { ChartData } from 'src/app/models/chart-data.model';
+
 @Component({
   selector: 'statistics-page',
   templateUrl: './statistics-page.component.html',

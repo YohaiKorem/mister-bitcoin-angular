@@ -18,12 +18,25 @@ export class SignupComponent implements OnInit {
   signupInfo: any = {};
 
   ngOnInit(): void {
-    this.loggedInUser = this.userService.getUser();
+    this.loggedInUser$ = this.userService.loggedInUser;
+    this.loggedInUser$.subscribe((user) => {
+      this.loggedInUser = user;
+    });
   }
 
-  handleLogIn() {}
-  handleSignup() {}
-  handleLogout() {}
+  handleLogIn() {
+    this.userService.login(this.credentials).subscribe((user) => {
+      this.loggedInUser = user;
+    });
+  }
+  handleSignup() {
+    this.userService.signup(this.signupInfo).subscribe((user) => {
+      this.loggedInUser = user;
+    });
+  }
+  handleLogout() {
+    this.loggedInUser = this.userService.logout();
+  }
   handleToggleForm() {
     this.isLoginClicked = !this.isLoginClicked;
     this.isSignupClicked = !this.isSignupClicked;

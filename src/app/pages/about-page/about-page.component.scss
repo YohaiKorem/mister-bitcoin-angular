@@ -1,20 +1,10 @@
 @import "../../app-root/app.component.scss";
 
-.home-page {
-  display: flex;
-  flex-direction: column;
-  color: $fontclr1;
-  align-items: center;
-  margin-block-start: 1em;
-}
-
 .call-to-action {
   margin-block-start: 1em;
   justify-self: center;
   color: $fontclr2;
   a {
-    position: relative;
-    display: block;
     color: $fontclr3;
     transition: 0.8s;
     scale: 1.2;
