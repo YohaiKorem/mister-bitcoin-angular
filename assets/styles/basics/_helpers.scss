@@ -235,9 +235,9 @@
   position: fixed;
   width: 100vw;
   height: 150vh;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -33%);
   overflow: hidden;
 
   z-index: 0;
@@ -245,8 +245,8 @@
   opacity: 0.6;
   cursor: pointer;
 
-  & + * {
-    overflow-y: scroll;
+  & * {
+    overflow: hidden;
   }
 }
 
@@ -263,4 +263,8 @@
 
 .no-scroll {
   overflow-y: hidden;
+}
+
+.margin-block {
+  margin-block: 1em;
 }
