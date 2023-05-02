@@ -1,13 +1,26 @@
 @import "../../app-root/app.component.scss";
-
+.about-page {
+  padding-inline: em(20px);
+  .img-skills-list-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 1em;
+    .yohai-img {
+      width: em(200px);
+      border-radius: 50%;
+    }
+  }
+}
 .call-to-action {
   margin-block-start: 1em;
   justify-self: center;
   color: $fontclr2;
   a {
-    color: $fontclr3;
+    color: darken($fontclr3, 20%);
     transition: 0.8s;
     scale: 1.2;
+    position: relative;
     &::before {
       transition: 0.6s;
 
@@ -17,7 +30,7 @@
       height: 0px;
       position: absolute;
       bottom: em(-5px);
-      background-color: $fontclr3;
+      background-color: $fontclr4;
     }
     &:hover {
       color: lighten($fontclr3, 20);

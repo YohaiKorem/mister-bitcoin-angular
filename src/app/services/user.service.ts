@@ -146,7 +146,7 @@ export class UserService {
     return user;
   }
 
-  private get sessionStorageUser(): User {
+  public get sessionStorageUser(): User {
     const user = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER);
     return user ? JSON.parse(user) : null;
   }

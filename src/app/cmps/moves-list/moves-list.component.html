@@ -10,7 +10,7 @@
   <ng-container *ngIf="moves!.length > 0; else noMoves">
     <ul class="moves-list">
       <h2>{{ title }}</h2>
-      <li *ngFor="let move of sortedMoves" class="move-item">
+      <li *ngFor="let move of moves" class="move-item">
         <a [routerLink]="['/contact', move.to?._id]">
           <ng-container *ngIf="!isDetailsCmp">
             <h3>{{ "To: " + move.to?.name }}</h3>

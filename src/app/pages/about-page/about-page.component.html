@@ -1,26 +1,119 @@
-<div>
-  <h1>About Mister-Bitcoin</h1>
-  <p>Welcome to Mister-Bitcoin, your go-to app for all things Bitcoin!</p>
-  <p>
-    Our app provides up-to-date information on the current price of Bitcoin, as
-    well as historical price data, market trends, and more. Whether you're a
-    seasoned Bitcoin investor or just getting started in the world of
-    cryptocurrency, Mister-Bitcoin has everything you need to stay informed and
-    make smart investment decisions.
-  </p>
-  <p>
-    Our team of experts is dedicated to bringing you the most accurate and
-    reliable information about Bitcoin and other cryptocurrencies. We're
-    constantly updating our app with the latest data and trends, so you can
-    always stay ahead of the curve.
-  </p>
-  <p class="call-to-action">
-    So what are you waiting for?
-    <span>
-      <a routerLink="/signup"> Signup for Mister-Bitcoin </a>
-    </span>
-    today and start exploring the exciting world of cryptocurrency!
-  </p>
-</div>
+<div class="about-page">
+  <coin></coin>
 
-<coin></coin>
+  <div class="scene">
+    <input
+      type="checkbox"
+      [checked]="isAboutYoh"
+      [(ngModel)]="isAboutYoh"
+      name=""
+      id="cb"
+    />
+    <div class="box">
+      <div class="side">
+        <h1>About Mister-Bitcoin</h1>
+        <p>Welcome to Mister-Bitcoin, your go-to app for all things Bitcoin!</p>
+        <p>
+          Our app provides up-to-date information on the current price of
+          Bitcoin, as well as historical price data, market trends, and more.
+          Whether you're a seasoned Bitcoin investor or just getting started in
+          the world of cryptocurrency, Mister-Bitcoin has everything you need to
+          stay informed and make smart investment decisions.
+        </p>
+        <p>
+          Our team of experts is dedicated to bringing you the most accurate and
+          reliable information about Bitcoin and other cryptocurrencies. We're
+          constantly updating our app with the latest data and trends, so you
+          can always stay ahead of the curve.
+        </p>
+        <div class="call-to-action">
+          <p>So what are you waiting for?</p>
+          <span>
+            <a routerLink="/signup"> Signup for Mister-Bitcoin </a>
+          </span>
+          today and start exploring the exciting world of cryptocurrency!
+        </div>
+      </div>
+      <div class="side">
+        <header>
+          <h1>About Yohai Korem</h1>
+        </header>
+        <section>
+          <h2>Background</h2>
+          <p>
+            Yohai Korem is a former Krav Maga instructor who has recently made a
+            career change into full-stack development. Although he does not have
+            a degree or formal experience in development, Yohai has gained
+            extensive knowledge and skills in various technologies, including:
+          </p>
+          <div class="img-skills-list-container">
+            <ul class="skills-list">
+              <li>JavaScript</li>
+              <li>Angular</li>
+              <li>React</li>
+              <li>Vue</li>
+              <li>CSS</li>
+              <li>SCSS</li>
+              <li>MongoDB</li>
+              <li>MySQL</li>
+            </ul>
+            <img class="yohai-img" src="assets/imgs/yohai.jpg" alt="" />
+          </div>
+        </section>
+        <section class="margin-block">
+          <h2>Passion for Technology</h2>
+          <p>
+            Yohai's passion for technology stems from his desire to solve
+            complex problems and create innovative solutions. He enjoys working
+            on challenging projects that require creative thinking and
+            problem-solving skills. Yohai is a self-starter and a quick learner,
+            and he is constantly seeking to expand his knowledge and expertise
+            in the field of development.
+          </p>
+        </section>
+        <section class="margin-block">
+          <h2>Skills and Achievements</h2>
+          <p>
+            Although Yohai is relatively new to the field of development, he has
+            already achieved some notable accomplishments. He has completed
+            Coding-Academy's full-stack bootcamp, and he has built several small
+            projects to showcase his skills. Yohai's technical skills include:
+          </p>
+          <ul>
+            <li>Building responsive web applications</li>
+            <li>Working with APIs</li>
+            <li>Using Git for version control</li>
+            <li>Debugging and troubleshooting code</li>
+            <li>Collaborating with others in a team environment</li>
+          </ul>
+          <p>
+            Yohai is eager to continue developing his skills and to take on new
+            challenges in the field of development.
+          </p>
+        </section>
+        <section class="margin-block">
+          <h2>Contact Information</h2>
+          <p>
+            To learn more about Yohai Korem, please feel free to contact him at:
+          </p>
+          <ul>
+            <li>Email: yohacasoy@gmail.com</li>
+            <li>
+              LinkedIn:
+              <a href="https://www.linkedin.com/in/yohai-korem/"
+                >https://www.linkedin.com/in/yohai-korem/</a
+              >
+            </li>
+          </ul>
+        </section>
+      </div>
+      <div class="side"></div>
+      <div class="side"></div>
+      <div class="side"></div>
+      <div class="side"></div>
+    </div>
+  </div>
+</div>
+<label for="cb" class="btn btn-purple margin-block"
+  >{{ isAboutYoh ? "About Mister-bitcoin" : "About Yohai" }}
+</label>

@@ -3,7 +3,8 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 export function authGuard() {
-  const user = inject(UserService).loggedInUser;
+  const user = inject(UserService).sessionStorageUser;
+
   if (user) return true;
   else {
     inject(Router).navigateByUrl('/');

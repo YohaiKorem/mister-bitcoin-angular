@@ -1,5 +1,5 @@
 <section *ngIf="contact$ | async as contact" class="contact-details">
-  <h3>{{ loggedInUser?.coins }}</h3>
+  <h3>Your coins: {{ loggedInUser?.coins }}</h3>
   <nav class="sub-nav">
     <a
       routerLink="/contact/{{ contact._id }}/edit"
@@ -17,7 +17,7 @@
   <transfer-funds (transferFunds)="onTransferFunds($event)"> </transfer-funds>
   <moves-list
     [isDetailsCmp]="true"
-    [moves]="getMovesForContact()"
+    [moves]="filteredMoves"
     [title]="'Your moves to ' + contact.name"
   ></moves-list>
 </section>

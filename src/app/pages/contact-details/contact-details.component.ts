@@ -19,6 +19,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
   contact$!: Observable<Contact>;
   loggedInUser: User | null = null;
   loggedInUser$!: Observable<User>;
+  filteredMoves: Move[] = [];
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -43,14 +44,14 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
       })
     );
   }
-  getMovesForContact(): Move[] {
-    return this.filteredMoves()!;
-  }
+  // getMovesForContact(): Move[] {
+  //   return this.filteredMoves()!;
+  // }
 
-  filteredMoves() {
-    return this.loggedInUser?.moves.filter((move) => {
+  getMovesForContact() {
+    this.filteredMoves = this.loggedInUser?.moves.filter((move) => {
       return move.to?._id === this.contact?._id;
-    });
+    })!;
   }
 
   ngOnDestroy(): void {
@@ -65,5 +66,6 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
     if (this.loggedInUser && this.contact) {
       this.userService.changeBalance(amount, this.loggedInUser, this.contact);
     }
+    this.getMovesForContact();
   }
 }

@@ -5,8 +5,9 @@
   padding-block: 4em;
   background: linear-gradient($bgc2, $bgc3, $bgc4);
   align-items: center;
-  padding-inline: em($outer-padding);
+  padding-inline: ($outer-padding);
   .logo {
+    margin-inline-start: 1em;
     width: em(300px);
     min-height: 3em;
     img {
@@ -20,7 +21,7 @@
   }
   .main-nav {
     width: 30%;
-    margin-inline-end: $outer-padding;
+    margin-inline-end: em(20px);
     transition: 0.6s;
     padding: 1em;
     ul {
@@ -57,9 +58,10 @@
         flex-direction: column;
         width: 100%;
         gap: em(20px);
+        padding-inline-end: 2em;
         justify-content: space-between;
         li {
-          margin-inline-end: 2em;
+          margin-inline-end: 1em;
         }
       }
     }
@@ -74,6 +76,15 @@
     .overlay {
       top: 0;
       left: 0;
+    }
+  }
+
+  @media (min-width: $tablet-breakpoint) {
+    .main-nav {
+      margin-inline-end: em(35px);
+      & li {
+        margin-inline-end: 2em;
+      }
     }
   }
 }
